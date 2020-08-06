@@ -1,0 +1,11 @@
+<div class="form-group">
+    <label><ng-content></ng-content></label>
+    <input type="text" class="form-control" [formControl]="ngControl.control"/>
+
+    <div *ngIf="ngControl.hasError('required')">
+        Gerekli
+    </div>
+    <div  *ngIf="ngControl.hasError('minlength')">
+        Minimum uzunluk {{ngControl.errors['minlength'].requiredLength}}  olmalıdır. 
+    </div>
+</div>

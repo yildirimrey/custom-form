@@ -1,0 +1,12 @@
+<form [formGroup]="form">
+    <ng-container *ngFor="let item of list">
+        <text-field formControlName="{{item}}">
+           {{item}}
+        </text-field>
+    </ng-container>
+    <button class="btn btn-xs btn-success" [disabled]="form.invalid || form.disabled">
+        Kaydet
+    </button>
+</form>
+
+{{form.value | json}}
