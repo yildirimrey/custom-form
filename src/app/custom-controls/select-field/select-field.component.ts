@@ -1,21 +1,22 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { NgControl, ControlValueAccessor } from '@angular/forms';
 
 @Component({
-  selector: 'text-field',
-  templateUrl: './text-field.component.html',
-  styleUrls: ['./text-field.component.css'],
+  selector: 'select-field',
+  templateUrl: './select-field.component.html',
+  styleUrls: ['./select-field.component.css']
 })
-export class TextFieldComponent implements ControlValueAccessor, OnInit {
+export class SelectFieldComponent implements ControlValueAccessor, OnInit {
 
   @Input() ngModel: any;
   @Output() ngModelChange: EventEmitter<any> = new EventEmitter();
+
   constructor(public ngControl: NgControl) {
     this.ngControl.valueAccessor = this;
   }
 
   ngOnInit() {
-    this.ngControl.valueChanges.subscribe(value => this.ngModelChange.emit(value));
+      this.ngControl.valueChanges.subscribe(value => this.ngModelChange.emit(value))
   }
 
   onChange: any = () => { }
@@ -31,7 +32,6 @@ export class TextFieldComponent implements ControlValueAccessor, OnInit {
   }
   // upon touching the element, this method gets triggered
   registerOnTouched(fn: any) {
-    this.onTouch = fn
+    this.onTouch = fn;
   }
-
 }

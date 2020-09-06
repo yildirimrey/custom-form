@@ -1,12 +1,23 @@
 <form [formGroup]="form">
     <ng-container *ngFor="let item of list">
-        <text-field formControlName="{{item}}">
-           {{item}}
-        </text-field>
+        <ng-container *ngIf="item!=='DepartmentID'">
+            <text-field formControlName="{{item}}" [(ngModel)]="model[item]">
+                {{item}}
+            </text-field>
+        </ng-container>
+        <ng-container *ngIf="item==='DepartmentID'">
+            <select-field formControlName="{{item}}" [(ngModel)]="model[item]">
+                {{item}}
+            </select-field>
+        </ng-container>
     </ng-container>
-    <button class="btn btn-xs btn-success" [disabled]="form.invalid || form.disabled">
-        Kaydet
-    </button>
 </form>
 
-{{form.value | json}}
+<button class="btn btn-xs btn-success" [disabled]="form.invalid || form.disabled">
+    Kaydet
+</button>
+<div>
+    {{form.value | json}}
+    <br>
+    {{model|json}}
+</div>

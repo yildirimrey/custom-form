@@ -1,2 +1,8 @@
-<app-my-form></app-my-form>
+<app-my-form [model]="user" (formValid)="formValid=$event"></app-my-form>
+<button class="btn btn-xs btn-success" [disabled]="formValid===false">
+    Kaydet
+</button>
+<div>
+    {{user|json}}
+</div>
 <router-outlet></router-outlet>
