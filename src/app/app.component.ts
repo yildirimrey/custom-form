@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-import { User } from './components/my-form/my-form.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  formValid = false;
-  title = 'customFormControlDemo';
-  user = new User({ Description: 'Emre', Name: 'Yıldırım', Title: 'yazılımcı' });
+  title = 'custom-form';
 }
